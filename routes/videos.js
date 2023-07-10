@@ -15,11 +15,10 @@ router.route("/").get((req, res) => {
 router.route("/:id").get((req, res) => {
 	const videoId = req.params.id;
 
-	// Find the video with the matching ID
 	const foundVideo = videos.find((video) => video.id === videoId);
 
 	if (foundVideo) {
-		// Retrieve specific properties from the video object
+
 		const {
 			id,
 			title,
@@ -33,7 +32,7 @@ router.route("/:id").get((req, res) => {
 			comments,
 		} = foundVideo;
 
-		// Create a new object with the desired properties including comments
+		
 		const videoData = {
 			id,
 			title,
@@ -53,10 +52,10 @@ router.route("/:id").get((req, res) => {
 			})),
 		};
 
-		// Return the videoData object as a JSON response
+		
 		res.json(videoData);
 	} else {
-		// Return an error message if the video is not found
+		
 		res.status(404).json({ error: "Video not found" });
 	}
 });
